@@ -15,13 +15,18 @@ const winningCombanations = [
   {combo:[2,4,6]}
 ]
 
+
+
 function Board() {
   const [circleTurn, setCircleTurn] = useState(true)
   const [board, setBoard] = useState(Array(9).fill(0))
+  const [winner, setWinner] = useState(null)
+
 
   useEffect(() => {
     checkWin();
   })
+
 
   const checkWin= () => {
     for(let i = 0; i < winningCombanations.length; i++) {
@@ -30,6 +35,7 @@ function Board() {
       const b = board[combo[1]]
       const c = board[combo[2]]
       if(a === b && b === c && a !== 0) {
+        setWinner(a)
         return
       }
     }
@@ -41,6 +47,9 @@ function Board() {
   }
 
   const handleFillBoard = (index) => {
+    if(winner){
+      return
+    }
     if(board[index] === 0 && circleTurn) {
       let newBoard = [...board]
       newBoard[index] = 1
@@ -50,15 +59,32 @@ function Board() {
       newBoard[index] = 2
       setBoard(newBoard)
     }
-    setCircleTurn(circleTurn => !circleTurn)
+    if(board[index]===0){
+      setCircleTurn(circleTurn => !circleTurn)
+    }
+  }
+
+  const handleClass= (index) => {
+    if(board[index]==0){
+      return 'able'
+    }else if(winner){
+      return 'win'
+    }else{
+      return 'filled'
+    }
   }
   return(
-    <div className="board">
-      {board.map((value, index) => 
-        <div key={index}  onClick={() => handleFillBoard(index)} className={value? 'filled' : 'able'}>
-          {value? <img src={values[value]} alt=""/> : null}
-        </div>
-      )}
+    <div>
+
+      <div className="board">
+        {board.map((value, index) => 
+          <div key={index}  onClick={() => handleFillBoard(index)} className={()=>handleClass(index)} >
+            {value? <img src={values[value]} alt=""/> : null }
+          </div>
+        )}
+      </div>
+      <h3>{winner ? `Winner is ${winner==1? 'X' : 'O'}` : `Next player ${circleTurn ? 'O' : 'X'}`}</h3>
+
     </div>
   )
 }
