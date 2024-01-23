@@ -83,7 +83,7 @@ function Board() {
           </div>
         )}
       </div>
-      <h3>{winner ? `Winner is ${winner==1? 'X' : 'O'}` : `Next player ${circleTurn ? 'O' : 'X'}`}</h3>
+      <h3>{winner ? `Winner is ${winner==1? 'O' : 'X'}` : `Next player ${circleTurn ? 'O' : 'X'}`}</h3>
 
     </div>
   )
