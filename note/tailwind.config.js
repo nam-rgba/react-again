@@ -11,11 +11,11 @@ export default {
       }
     },
     colors: {
-      border_color: '#bce3c9',
-      black_text: '#3d3d3d',
-      gray_text:'#9e9e9e',
-      border_gray: '#e0e0e0',
-      green_text:'#3bb77e'
+      green_2: '#bce3c9',
+      black_1: '#3d3d3d',
+      gray_1:'#9e9e9e',
+      gray_2: '#e0e0e0',
+      green_1:'#3bb77e'
     }
 
 
