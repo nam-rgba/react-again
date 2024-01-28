@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import './App.css'
 import { Routes, Route, Navigate} from 'react-router-dom'
 import NewNote from './components/NewNote'
