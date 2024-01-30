@@ -74,3 +74,9 @@ export const themes : {[key: string]: Theme} = {
     },
   },
 };
+
+export const times : {[key: string]: number} = {
+  '15s': 15,
+  '30s': 30,
+  '60s': 60,
+};
