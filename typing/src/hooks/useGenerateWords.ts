@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {faker} from '@faker-js/faker';
 
 const useGenerateWords = (numWords: number) => {
@@ -9,7 +9,12 @@ const useGenerateWords = (numWords: number) => {
     setWords(newWords);
   }, [numWords]);
 
-  return {words, setWords};
+  const updateWords = useCallback(() => {
+    const newWords = faker.lorem.words(numWords);
+    setWords(newWords); 
+  }, [numWords]);
+
+  return {words, updateWords};
 };
 
 export default useGenerateWords;

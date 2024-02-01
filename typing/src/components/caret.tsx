@@ -7,7 +7,7 @@ const Caret = () => {
       animate={{ opacity: 0 }}
       transition={{ duration: 0.8, repeat: Infinity, ease: 'easeInOut'}}
       className='inline-block bg-airbnb_yellow '  
-      style={{height: '1rem', width: '0.1rem'}} 
+      style={{height: '1.2rem', width: '2px'}} 
     >
       
     </motion.div>

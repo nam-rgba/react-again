@@ -80,3 +80,42 @@ export const times : {[key: string]: number} = {
   '30s': 30,
   '60s': 60,
 };
+
+export const isKeyboardCodeValid = (code: string) => {
+  return(
+    code.startsWith('Key') ||
+    code === 'Backspace' ||
+    code.startsWith('Digit') ||
+    code === 'Space'
+  );
+};
+
+export const countErrors = (actual:string, expected:string) => {
+  const expectedArray = expected.split('');
+
+  return expectedArray.reduce((error, letter, index) => {
+    const actualLetter = actual[index];
+    if(actualLetter !== letter){
+      return error + 1;
+    }
+    return error; 
+  },0);
+};
+
+export const calcAccuracy = ({totalTyped, error}:{totalTyped:number, error:number}) => {
+  if(totalTyped === 0){
+    return 0;
+  }
+  return Math.floor(((totalTyped - error) / totalTyped) * 100);
+}
+
+export const formatPercentage = (percentage: number) => {
+  return percentage.toFixed(0) + "%";
+};
+
+export const debug = (str: string) => {
+  if (process.env.NODE_ENV === "development") {
+    console.debug(str);
+  }
+};
+

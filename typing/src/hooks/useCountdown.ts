@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useCallback, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
 const useCountdown = (time: number) => {
 
@@ -24,7 +24,7 @@ const useCountdown = (time: number) => {
     },[setTimeLeft, isRunning, hasTimeLeft]);
 
     // Reset countdown
-    const reserCountdown = useCallback(() => {
+    const resetCountdown = useCallback(() => {
         // Clear interval if exist 
         clearInterval(intervalRef.current!);
         // Set interval to null
@@ -32,6 +32,24 @@ const useCountdown = (time: number) => {
         // Reset time
         setTimeLeft(time);
     },[time]);
-    
 
-}
+    // when count to 0, clear interval and set interval to null
+    useEffect(() => {
+        if(hasTimeLeft) {
+            clearInterval(intervalRef.current!);
+            intervalRef.current = null;
+        }
+    },[hasTimeLeft]);
+
+    // when component unmount, clear interval and set interval to null
+    useEffect(() => {
+        return () => {
+            clearInterval(intervalRef.current!);
+        }
+    },[]);
+
+    return {timeLeft, startCountdown, resetCountdown, isRunning}
+
+};
+
+export default useCountdown;

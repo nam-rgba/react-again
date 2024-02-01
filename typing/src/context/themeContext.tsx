@@ -21,7 +21,7 @@ type ThemeContextType = {
 export default function ThemeContextProvider({children}: ThemeContextType) {
 
     // Kiểm tra local storage, nếu có thì set lại theme
-    const [localTheme,]=useLocalStorage<string>('THEME','blueDolphin'); // initial value là blueDolphin
+    const [localTheme,]=useLocalStorage<string>('THEME','aurora'); // initial value là blueDolphin
     
     // Khởi tạo theme
     const [theme, setTheme] = useState<Theme>(()=>{

@@ -2,12 +2,14 @@ import {times} from '../utils/index'
 
 type Props = {
 
-    time: number
-    changeTime: React.Dispatch<React.SetStateAction<number>>
+    timeStart: number
+    timeLeft: number
+    changeTime: (time: number) => void
     color: string
+    isRunning: boolean
 }
 
-export default function Time({time, changeTime, color}: Props) {
+export default function Time({timeStart, timeLeft, changeTime, color, isRunning}: Props) {
     return(
         <div className="w-2/3 h-8 flex flex-row items-center justify-between bg-inherit ">
             <div className="flex flex-row items-center justify-around w-1/4 h-full">
@@ -25,7 +27,7 @@ export default function Time({time, changeTime, color}: Props) {
             </div>
 
             <div className='w-1/5 h-full text-center' style={{color: color}} >
-                    {time}
+                    {isRunning ? timeLeft : timeStart}
             </div>
         </div>
     )
