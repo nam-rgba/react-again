@@ -24,6 +24,7 @@ export default {
       airbnb_orange:'#ff5a5f',
       airbnb_babu:'#00a699',
       airbnb_arches:'#fc642d',
+      transparent: 'transparent',
     }
 
 

@@ -102,7 +102,7 @@ export const countErrors = (actual:string, expected:string) => {
   },0);
 };
 
-export const calcAccuracy = ({totalTyped, error}:{totalTyped:number, error:number}) => {
+export const calcAccuracy = (totalTyped:number, error:number) => {
   if(totalTyped === 0){
     return 0;
   }
@@ -112,6 +112,12 @@ export const calcAccuracy = ({totalTyped, error}:{totalTyped:number, error:numbe
 export const formatPercentage = (percentage: number) => {
   return percentage.toFixed(0) + "%";
 };
+
+export const calcWPM = (totalTyped:number, time:number) => {
+  const minutes = time / 60;
+  const words = totalTyped / 5;
+  return Math.floor(words / minutes);
+}
 
 export const debug = (str: string) => {
   if (process.env.NODE_ENV === "development") {

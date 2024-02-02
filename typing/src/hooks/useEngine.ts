@@ -61,7 +61,7 @@ const useEngine = ({timeL}:{timeL: number}) => {
         }
     },[cusor, words, clearTyped, typed, areWordsEnd, sumError]);
 
-    return {state, words, timeLeft, resetCountdown,isRunning, typed, totalTyped, error, restart};
+    return {state, words, timeLeft, resetCountdown,isRunning, typed, totalTyped, error, restart};   
 
 }
 

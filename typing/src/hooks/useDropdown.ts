@@ -5,7 +5,7 @@ interface DropdownProps {
 }
 
 interface DropdownResult {
-  isVisible: boolean;
+  isOpen: boolean;
   toggleDropdown: () => void;
   dropdownRef: React.RefObject<HTMLDivElement>;
 }
@@ -22,7 +22,7 @@ export const useDropdown = ({ initialIsVisible = false }: DropdownProps = {}): D
  */
 
   // State to store the visibility
-  const [isVisible, setIsVisible] = useState(initialIsVisible);
+  const [isOpen, setIsVisible] = useState(initialIsVisible);
   // Reference to the dropdown
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -46,7 +46,7 @@ export const useDropdown = ({ initialIsVisible = false }: DropdownProps = {}): D
     };
   }, [handleClickOutside]);
 
-  return { isVisible, toggleDropdown, dropdownRef };
+  return { isOpen, toggleDropdown, dropdownRef };
 };
 
 

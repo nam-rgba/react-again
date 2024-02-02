@@ -14,6 +14,5 @@ export interface Theme {
 export interface Result{
     accuracy: number;
     error: number;
-    time: number;
     wpm: number;
 }
