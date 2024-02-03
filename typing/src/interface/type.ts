@@ -11,6 +11,11 @@ export interface Theme {
     };
 }
 
+export interface Tutor{
+    name: string;
+    link: string;
+}
+
 export interface Result{
     accuracy: number;
     error: number;

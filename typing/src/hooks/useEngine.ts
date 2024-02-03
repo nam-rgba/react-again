@@ -9,12 +9,12 @@ import { countErrors } from '../utils/index';
 export type State = 'START' | 'PLAYING' | 'END';
 
 
-const useEngine = ({timeL}:{timeL: number}) => {
+const useEngine = (timeL: number, setOpenThank: ()=>void) => {
     const [state, setState] = useState<State>('START');
     const NUM_WORDS = useMemo(() => 20, []);
     const {words, updateWords} = useGenerateWords(NUM_WORDS);
     const {timeLeft, startCountdown, resetCountdown, isRunning }= useCountdown(timeL);
-    const {cusor, typed, totalTyped, clearTyped, resetTotalTyped} = useTyping(state !== 'END' );
+    const {cusor, typed, totalTyped, clearTyped, resetTotalTyped} = useTyping(state !== 'END', setOpenThank );
 
     // check if the user has started typing and the cursor is not at the start
     const isStart = state === 'START' && cusor>0;

@@ -1,4 +1,4 @@
-import { Theme } from "../interface/type";
+import { Theme, Tutor } from "../interface/type";
 
 export const themes : {[key: string]: Theme} = {
   blueDolphin: {
@@ -81,12 +81,25 @@ export const times : {[key: string]: number} = {
   '60s': 60,
 };
 
+export const tutor : {[key: string]: Tutor} = {
+  'Code With Gionatha: ': {
+    name: 'Code With Gionatha',
+    link: 'https://www.youtube.com/watch?v=oc7BMlIU3VY&t=1070s&ab_channel=CodeWithGionatha'
+  },
+  'Estifanos12: ': {
+    name: 'Estifanos12',
+    link: 'https://github.com/Estifanos12'
+  },
+}
+
+
 export const isKeyboardCodeValid = (code: string) => {
   return(
     code.startsWith('Key') ||
     code === 'Backspace' ||
     code.startsWith('Digit') ||
-    code === 'Space'
+    code === 'Space' ||
+    code === 'Escape'
   );
 };
 

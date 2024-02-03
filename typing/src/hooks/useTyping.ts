@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { isKeyboardCodeValid } from "../utils";
 
 
-const useTyping = (enable:boolean) => {
+const useTyping = (enable:boolean, setOpenThank:()=>void) => {
     // Init position of cursor
     const [cusor, setCursor] = useState(0);
     // Init typed string
@@ -20,6 +20,11 @@ const useTyping = (enable:boolean) => {
                 setTyped((prevTyped) => prevTyped.slice(0, -1));
                 setCursor((prevCursor) => prevCursor - 1);
                 totalTyped.current -= 1;
+                break;
+
+            case 'Escape':
+                setOpenThank();
+                console.log('esc');
                 break;
             
             default:

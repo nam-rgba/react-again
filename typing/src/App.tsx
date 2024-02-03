@@ -3,6 +3,7 @@ import Header from './components/header'
 import Time from './components/time'
 import Typing from './components/typing'
 import Words from './components/words'
+import Thank from './components/thank'
 import { useTheme } from './hooks/useTheme'
 import { useEffect, useState } from 'react'
 import useEngine from './hooks/useEngine'
@@ -11,10 +12,10 @@ import { calcAccuracy, calcWPM } from './utils'
 
 function App() {
 
-
-  const {theme,} = useTheme()
   const [timeL, setTime] = useState<number>(30);
-  const { words, timeLeft,error, resetCountdown,typed, totalTyped, state, restart} = useEngine({timeL: timeL})
+  const [openThank, setOpenThank] = useState<boolean>(false)
+  const {theme,} = useTheme()
+  const { words, timeLeft, error, resetCountdown, typed, totalTyped, state, restart } = useEngine(timeL, () => setOpenThank(false));
 
   const handleChangeTime = (time: number) => {
     const newTime= time;
@@ -24,10 +25,14 @@ function App() {
     resetCountdown()
   }, [timeL, resetCountdown])
 
+  const handleShowThank = () => {
+    setOpenThank(!openThank)
+  }
+
 
   return (
     <div className="w-full max-w-full h-screen p-5" style={{backgroundColor: theme.background.primary}}>
-      <Header colorIcon={theme.text.title}/>
+      <Header colorIcon={theme.text.title} handleShow={handleShowThank} />
       <div className="w-full max-w-full h-[calc(100vh-5rem)] flex flex-col items-center justify-center">
         <Time timeStart={timeL} timeLeft={timeLeft} changeTime={handleChangeTime} color={theme.text.secondary} isRunning={state}/>
         
@@ -46,6 +51,7 @@ function App() {
                 restart={restart}
                 />
       </div>
+      {openThank && <Thank close={handleShowThank}/>}
     </div>
   )
 }
