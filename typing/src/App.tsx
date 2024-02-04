@@ -31,7 +31,7 @@ function App() {
 
 
   return (
-    <div className="w-full max-w-full h-screen p-5" style={{backgroundColor: theme.background.primary}}>
+    <div className="min-w-full w-full max-w-full h-screen p-5" style={{backgroundColor: theme.background.primary}}>
       <Header colorIcon={theme.text.title} handleShow={handleShowThank} />
       <div className="w-full max-w-full h-[calc(100vh-5rem)] flex flex-col items-center justify-center">
         <Time timeStart={timeL} timeLeft={timeLeft} changeTime={handleChangeTime} color={theme.text.secondary} isRunning={state}/>
